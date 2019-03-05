@@ -46,7 +46,9 @@ for kval = 2:10;
 
     % cluster!
     disp(['working on kval = ',num2str(kval)])
-    [IDX,C]=kmeans(z,kval,'MaxIter',200);
+    %seedval=rand(kval,1)*2 - 1;
+    %[IDX,C]=kmeans(z,kval,'MaxIter',200,'Start',seedval);
+    [IDX,C]=kmeans(z,kval,'MaxIter',200,'Replicates',5,'Display','final');
 
     % re-build the cluster matrix by placing the centeroid values
     for m=1:length(IDX)
